@@ -1,24 +1,5 @@
-# test
+练习项目：在线购票系统
 
-## Project setup
-```
-npm install
-```
+使用几个自己用原生js写的canvas动画demo和交互demo
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+顺便练习一下git~
