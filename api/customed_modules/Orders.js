@@ -1,0 +1,33 @@
+const express=require('express')
+const config=require('./config.js')
+const jwt=require('jsonwebtoken')
+const db=require('./sqlcon.js')
+
+
+const router=express.Router()
+
+
+
+router.post('/',(req,res,next)=>{
+
+if(req.untoken==0)
+{
+	res.send('expired')
+}
+else{
+   db.query(`select * from \`订单详情\` where UID=${req.body.UID}`,(err,result)=>{
+    
+    if(err){
+     res.send('出错了！')
+    }
+    else{
+res.send(result);
+    }
+
+   })
+
+
+}
+}
+)
+module.exports=router;
