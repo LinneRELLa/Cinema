@@ -164,7 +164,7 @@ height: calc(100% - 20px);
 }
 
 #rightin{
-	overflow: hidden;
+	overflow: auto;
 	flex: 1;
 	display: flex;
 
@@ -172,7 +172,7 @@ height: calc(100% - 20px);
 
 #rightout{
 
-	overflow: hidden;
+	overflow: auto;
 	flex: 1;
 	display: flex;
 }

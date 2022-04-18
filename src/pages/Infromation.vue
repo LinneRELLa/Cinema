@@ -167,8 +167,8 @@ if(dif<0){
 .outer{
 	z-index: 2;
 	padding: 100px;
-	margin-top: 20px;
-	min-width: 1000px;
+	
+	min-width: 1rem;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;

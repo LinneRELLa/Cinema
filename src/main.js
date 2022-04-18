@@ -19,7 +19,7 @@ import RealRouter from './router'
 import './CSS/element-ui-reset.less'
 
 
-axios.defaults.baseURL='http://www.rellal.com:900';
+axios.defaults.baseURL='https://www.rellal.com:900';
 
 axios.interceptors.request.use(config => {
   let url = config.url.split('/')[2];

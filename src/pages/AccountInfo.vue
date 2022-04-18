@@ -104,6 +104,7 @@ data(){
 color: white;
 flex: 1;
 min-width: 600px;
+overflow:auto;
 
 }
 .downloading{

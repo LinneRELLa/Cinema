@@ -91,7 +91,7 @@ height: 100%;
 	min-width: 600px;
 	
 	background:rgba(36, 40, 47, 0.8);
-
+overflow: auto;
 }
 
 

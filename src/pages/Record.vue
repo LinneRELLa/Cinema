@@ -301,7 +301,7 @@ overflow: hidden;
 		flex-direction: column;
 		align-items:center;
 		width: 100%;
-		min-width:1080px;
+		min-width:1380px;
 	}
 	.leftcontent{
 		width: 50%;
