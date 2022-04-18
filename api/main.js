@@ -7,7 +7,9 @@ var http = require('http');
 var fs = require('fs');
 
 
-
+const key=fs.readFileSync('./key/www.rellal.com.key');
+const cert=fs.readFileSync('./key/www.rellal.com.crt');
+const options={ket,cert}
 
 
 
@@ -67,7 +69,4 @@ app.use('/api/Record',Record)
 
 
 
-app.listen(900,()=>{
-
-	console.log('listening');
-})
+https.createServer(options,app).listen(900)
