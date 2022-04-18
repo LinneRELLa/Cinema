@@ -114,7 +114,7 @@ color: none;
 		width:100%;height:100%;justify-content:space-around;border:1px solid #000;align-content:flex-start;
 		flex-direction: column;
 
-
+overflow: hidden;
 
 		}
 		#root #top{height:20px;width:100%;border:1px solid #000;

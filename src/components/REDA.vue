@@ -272,7 +272,25 @@ if(this.editable){
     }
   }
 }
+function debounce(fn,wait){
+let timerx=null
+return function (){
 
+if(timerx){
+  clearTimeout(timerx);
+   console.log('debouncce')  
+}
+
+  timerx=setTimeout(()=>{
+
+
+    fn.call(this)},wait);
+ 
+
+}
+}
+const fn=()=>{vc.$bus.$emit('RC',dst.join(','));}
+const emit=debounce(fn,1000)
   canvas.onmousemove = function (e) {
 
     // 取得鼠标位置
@@ -369,6 +387,9 @@ context.closePath();
 
 
 
+emit();
+
+
 
 
 
@@ -385,7 +406,7 @@ context.closePath();
 
  canvas.onmouseup = function () {
 
- vc.$bus.$emit('RC',dst.join(','));
+
     isDragging = false;
     isInOut = false
 
