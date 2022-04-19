@@ -23,10 +23,10 @@ query:{No:x[0].片号,
 		
 		
 		<div class="front">
-		<el-image :src="x[0].封面" lazy/> 
+		<img :src="Number(x[0].片号)" alt="" class="fronts" /> 
 		</div>
 		<div>
-			<LineChart v-if="!aloading" :data="x[0].总评"/>
+			<LineChart v-if="!loading" :data="x[0].总评"/>
 		</div>
 <div class="innercont">
 	<div class="leftcontent">
@@ -70,6 +70,8 @@ query:{No:x[0].片号,
 	import REDA from '../components/REDA'
 import LineChart from '../components/LineChart'
 export default{
+	mounted(){
+	},
 	name:'Record',
 	deactivated(){
 		
@@ -83,7 +85,9 @@ created(){
 this.Firstget().then(()=>{
 
 
-this.data=this.SortedRecord()});
+this.data=this.SortedRecord()
+this.$nextTick(()=>{this.lazyload()});
+});
 
 
 },
@@ -95,7 +99,38 @@ data:[],
 	loading:1}
 	},
 	methods:{
+lazyload(){
+	const lload=function(entries,observer){
+	
+for(let entry of entries){
+const src=entry.target.src.split('/')[entry.target.src.split('/').length-1]
+	if(entry.isIntersecting){
+if(Number(src)){
+	for(let x of this.data){
+		if(src==x[0].片号){
+			entry.target.src=x[0].封面
+			console.log(src)
+		}
+	}
+	
+						}
+					}
+				}
+}.bind(this)
+		const observer=new IntersectionObserver(lload,{
+			root:document.querySelectorAll('#root')[1],
+			threshold:1.0
+		})
+const fronts=document.querySelectorAll('.fronts')
+console.log(fronts)
+ 
+
+for(let x of fronts){
+	observer.observe(x)
+}
+},
 SortedRecord(){
+	if(this.$store.state.Record.length){
    let x=this.$store.state.Record.sort((a,b)=>{return a.片号-b.片号});
 
    let sorted=[];
@@ -147,7 +182,10 @@ sorted.sort((a,b)=>{
 	return sum(b[0].总评)-sum(a[0].总评)})
 
 return sorted;
-  },
+  }
+return [];
+
+},
 
 Firstget(){
 			return this.axios({
@@ -301,11 +339,14 @@ overflow: hidden;
 		flex-direction: column;
 		align-items:center;
 		width: 100%;
-		min-width:1380px;
+		min-width:1480px;
 	}
 	.leftcontent{
 		width: 50%;
 	}
-
+.fronts{
+	width: 100%;
+	height: 100%;
+}
 
 </style>

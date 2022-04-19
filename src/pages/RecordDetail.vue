@@ -58,8 +58,13 @@ background: rgba(0,0,0,0.6);
 </el-row>
 </div>
 
+
+
+<div class="footer">加载更多</div>
+
 </div>
-</div>
+
+
 </template>
 <script type="text/javascript">
 	import REDA from '../components/REDA'
@@ -70,22 +75,31 @@ background: rgba(0,0,0,0.6);
         let x=this.throlote(this.sub,3000);
         return x;
 
-    }
+    },
+    infinitesub(){
+    	 let x=this.throlote(this.infinitetest,3000);
+        return x;
 		},
+    },
 created(){
 		this.$bus.$on('RC',(res)=>{
 
 		this.record=res;
+		
 		
 	})
 
    this.update();
   
      },
+     mounted(){
+this.lazyload();
+     },
 activated(){
 	
 	if(this.records.length==0){
 this.update();
+
 }
 
 
@@ -108,6 +122,35 @@ record:'80,80,80,80,80',
      	}
      },
      	methods:{
+     		lazyload(){
+     			console.log('lzload')
+	const lload=function(entries,observer){
+	
+if(entries[0].isIntersecting){
+	console.log('infinite load')
+	this.infinitesub();
+	let x=0;
+
+	const timer=setInterval(()=>{root.scrollTo(0,x);x++
+if(x==60){
+clearInterval(timer);
+}
+	},10)
+
+
+}
+}.bind(this)
+const root=document.querySelector('#rightin')
+		const observer=new IntersectionObserver(lload,{
+			root:root,
+			threshold:1.0
+		})
+const target=document.querySelector('.footer')
+ 
+root.scrollTo(0,60)
+	observer.observe(target)
+
+},
 time(x){
 return moment(x).format('YYYY-M-D H:mm:ss');
 },
@@ -148,6 +191,28 @@ Object.assign(toadd,annoy);
 	this.$store.dispatch('addrecord',toadd);
 this.update();
 },
+infinitetest(){
+
+let toadd={}
+Object.assign(toadd,this.records[0]);
+let curac=this.$store.state.AC[0]?this.$store.state.AC[0]:{}
+let annoy={Account:curac.Account?curac.Account:'uk',
+           UID:curac.UID?curac.UID:'uk',
+           头像:curac.头像?curac.头像:'http://r.photo.store.qq.com/psc?/V53ZbwIa09kn2Q0usRF00zmUxK3YRSXK/45NBuzDIW489QBoVep5mcVunig8u.neSyFzJnAVs2NYv4wCXzHcQ3BzquOmk*KqXAfzHAWskCYzYX.5*g1FzXAvshHSxLOXPnZ9ubScu2RA!/r',
+           打分:this.record,
+           时间:moment().format(),
+           昵称:curac.昵称?curac.昵称:'无限懒加载测试',
+           短评:'无限懒加载测试',
+}
+Object.assign(toadd,annoy);
+
+	this.$store.dispatch('addrecord',toadd);
+this.update();
+
+}
+
+
+,
 update(){ 
 this.records=[];
      if(this.$store.state.Record.length==0){
@@ -213,12 +278,13 @@ height: 150px;
 
 }
 .bg{
+	position:relative;
 	color: white;
 	background: black;
 	width: 100%;
+	padding:60px 200px;
 	height: calc(100% - 60px);
 	overflow: auto;
-	padding:60px 200px;
 }
 .acinfo{
 	display: flex;
@@ -246,6 +312,11 @@ font-size: 10px;
 	min-width: 650px;
 }
 
+.footer{position: absolute;
+top: 0;
+text-align: center;
+font-size:10px;
 
+}
 
 </style>

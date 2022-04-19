@@ -69,6 +69,7 @@ context.arc(canvas.width/2,canvas.height/2,canvas.height/3-10,0,Math.PI*2)
 context.fill()
 }
 let start=0;
+
 /*转起来了*/
 /*setInterval(()=>{
 console.log('转起来了')
@@ -92,9 +93,10 @@ const timer=setInterval(()=>{
 		now+=1;
 
 
-	context.beginPath()
 	context.clearRect(0,0,canvas.width,canvas.height)
 
+syncpaint(syncstart,sum,data1,index-1)
+	context.beginPath()
 	context.globalAlpha = 1;
 
 	context.moveTo(canvas.width/2,canvas.height/2)
@@ -105,7 +107,7 @@ const timer=setInterval(()=>{
 	context.shadowBlur=10;
 context.shadowColor=color[index%color.length];
 context.fill()
-	syncpaint(syncstart,sum,data1,index-1)
+	
 	context.beginPath()
 context.moveTo(canvas.width/2,canvas.height/2)
 context.fillStyle='black'

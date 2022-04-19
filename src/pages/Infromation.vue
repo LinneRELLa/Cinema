@@ -74,7 +74,7 @@ import moment from 'moment'
 
 
 mounted(){
-	console.log(this.$store.state.AC[0])
+
 	if(this.$store.state.AC[0]==undefined){
 this.$router.push({
 	path:'/AccountInfo',
@@ -103,7 +103,7 @@ this.axios(
 }
 )
 
-	console.log(this)
+
 },
 data(){
 
