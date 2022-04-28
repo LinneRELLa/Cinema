@@ -62,7 +62,7 @@ created(){
 methods:{
 
      throlette(fn,wait){ 	
-    let late=Date.now()
+    let late=0
     return function(){
      let current=Date.now()
   

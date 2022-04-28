@@ -166,7 +166,7 @@ else{
 
 	let Xcor=20; let Ycor=canvas.width-20;
 
-context.stroke()
+
 	for(let n in data ){ 
 
 		sync(data.slice(0,n),maxi,length,context,canvas) 
@@ -200,12 +200,19 @@ const timer=setInterval(()=>{
 	  if(x==time)
            {
            	 
-         
+     
 
 
            	clearInterval(timer);
+           	      if(n==data.length-1){
+     context.clearRect(20,0,canvas.width-20,canvas.height-20)
+     	sync(data.slice(0,n+1),maxi,length,context,canvas) 
+          	  synctext(data,maxi,length,context,canvas,n+1) 
+          	context.stroke()
+          	return 
+          }
            	resolve();
-          
+   
 
            }
       
@@ -243,7 +250,7 @@ const timer=setInterval(()=>{
 
 
 frame(context,canvas);
-asyncpaint(this.data.split(',').map(x=>Number(x)),context,canvas,40)
+asyncpaint(this.data.split(',').map(x=>Number(x)),context,canvas,120)
 
 
 

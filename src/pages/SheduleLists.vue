@@ -99,20 +99,32 @@ this.axios({
 }).then(data=>{
 
 	this.response=data;
-	this.loading=0;
+	
 	this.$bus.$emit('sloaded',1);
 	this.$store.dispatch('allFilms',{data})
+	setTimeout(()=>{  this.loading=0;},500);
+ 
+ 
+
 
 });}
+else{
+this.response.data=this.$store.state.data.data;
+console.log(this.response)
+	this.loading=0
+}
 	
 		},
 		/*--------------------------------------*/
+
 name:'SheduleLists',
         /*--------------------------------------*/
-beforeCreate(){
+beforeCreate:
+function(){
 
 	this.loading=1;
-	this.$bus.$emit('sloaded',0);},
+
+	},
        /*--------------------------------------*/
 
 beforeDestroy(){
@@ -127,7 +139,8 @@ data(){
 		response:{},
 		method:{sort:'放映厅',
 		titlesort:'厅名',
-		showinfo:'FilmName'
+		showinfo:'FilmName',
+		imgloading:1
 		
 	},
 	loading:1,
@@ -136,6 +149,12 @@ data(){
 
 
 	},
+	    /*--------------------------------------*/
+mounted(){
+
+
+},
+
 	    /*--------------------------------------*/
 computed:{
 
