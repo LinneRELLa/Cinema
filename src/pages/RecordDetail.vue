@@ -12,7 +12,7 @@
 
     enter-active-class="animate__backInLeft"
   >
-		<el-row :gutter="20" v-for="x of records" v-if="records[0].Account" :key="x.时间" >
+		<el-row :gutter="20" v-for="(x,index) of records" v-if="records[0].Account" :key="x.时间" >
 		
 			<el-col :span="3" :offset="4" >
 			
@@ -39,7 +39,9 @@
 </div>
 </el-col>
 </el-row>
+
 </transition-group>
+<div class="footer" v-show="records.length>=5">加载更多</div>
 <div style="min-width: 1060px;position: sticky;bottom: 0;
 background: rgba(0,0,0,0.6);
 ">
@@ -60,7 +62,7 @@ background: rgba(0,0,0,0.6);
 
 
 
-<div class="footer">加载更多</div>
+
 
 </div>
 
@@ -72,12 +74,13 @@ background: rgba(0,0,0,0.6);
 		name:'RD',
 		computed:{
 			throsub(){
-        let x=this.throlote(this.sub,3000);
+        let x=this.throlote(this.sub,30);
         return x;
 
     },
     infinitesub(){
-    	 let x=this.throlote(this.infinitetest,3000);
+
+    	 let x=this.throlote(this.infinitetest,30);
         return x;
 		},
     },
@@ -119,6 +122,8 @@ this.update();
 comment:'',
 input:0,
 record:'80,80,80,80,80',
+timenow:moment().year(2021),
+infinitetimes:0,
      	}
      },
      	methods:{
@@ -131,11 +136,7 @@ if(entries[0].isIntersecting){
 	this.infinitesub();
 	let x=0;
 
-	const timer=setInterval(()=>{root.scrollTo(0,x);x++
-if(x==60){
-clearInterval(timer);
-}
-	},10)
+
 
 
 }
@@ -147,7 +148,7 @@ const root=document.querySelector('#rightin')
 		})
 const target=document.querySelector('.footer')
  
-root.scrollTo(0,60)
+
 	observer.observe(target)
 
 },
@@ -175,7 +176,7 @@ else{
 	}
 },
 sub(){
-let toadd={}
+let toadd={};
 Object.assign(toadd,this.records[0]);
 let curac=this.$store.state.AC[0]?this.$store.state.AC[0]:{}
 let annoy={Account:curac.Account?curac.Account:'uk',
@@ -200,10 +201,11 @@ let annoy={Account:curac.Account?curac.Account:'uk',
            UID:curac.UID?curac.UID:'uk',
            头像:curac.头像?curac.头像:'http://r.photo.store.qq.com/psc?/V53ZbwIa09kn2Q0usRF00zmUxK3YRSXK/45NBuzDIW489QBoVep5mcVunig8u.neSyFzJnAVs2NYv4wCXzHcQ3BzquOmk*KqXAfzHAWskCYzYX.5*g1FzXAvshHSxLOXPnZ9ubScu2RA!/r',
            打分:this.record,
-           时间:moment().format(),
-           昵称:curac.昵称?curac.昵称:'无限懒加载测试',
-           短评:'无限懒加载测试',
+           时间:this.timenow.subtract(this.infinitetimes,'seconds').format('YYYY-M-D H:mm:ss'),
+           昵称:'无限加载测试',
+           短评:'无限加载测试',
 }
+this.infinitetimes++;
 Object.assign(toadd,annoy);
 
 	this.$store.dispatch('addrecord',toadd);
@@ -312,8 +314,8 @@ font-size: 10px;
 	min-width: 650px;
 }
 
-.footer{position: absolute;
-top: 0;
+.footer{position: relative;
+
 text-align: center;
 font-size:10px;
 

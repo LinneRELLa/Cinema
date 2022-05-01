@@ -3,7 +3,7 @@ module.exports={
   context: 'G:\\ROREL\\VUE\\test',
   output: {
     hashFunction: 'xxhash64',
-    path: 'G:\\ROREL\\VUE\\test\\webpackdemo',
+    path: 'G:\\ROREL\\VUE\\test\\dist',
     filename: 'js/[name].js',
     publicPath: '',
     chunkFilename: 'js/[name].js'

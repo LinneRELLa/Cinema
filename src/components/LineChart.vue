@@ -250,7 +250,7 @@ const timer=setInterval(()=>{
 
 
 frame(context,canvas);
-asyncpaint(this.data.split(',').map(x=>Number(x)),context,canvas,120)
+asyncpaint(this.data.split(',').map(x=>Number(x)),context,canvas,60)
 
 
 
