@@ -74,7 +74,7 @@ background: rgba(0,0,0,0.6);
 		name:'RD',
 		computed:{
 			throsub(){
-        let x=this.throlote(this.sub,30);
+        let x=this.throlote(this.sub,1000);
         return x;
 
     },

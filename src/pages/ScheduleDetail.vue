@@ -46,7 +46,8 @@ circle
 
 ></div></div>
 好评率:
-<Sector/>
+<Sector v-if="!end(x.StartTime)"/>
+<bar/>
 <REDA :editable="0" :data="x.评价"/>
 
 <el-button 
@@ -62,7 +63,9 @@ v-if="!logined"
 	name:'login'
 }">
 <el-button type="primary" v-if="logined">登录后购票</el-button>
+
 </router-link>
+<Cinema :SeatNo="isNaN(selected)?80:selected" v-if="!isNaN(selected)" />
 </div>
 </div>
 </template>
@@ -70,6 +73,8 @@ v-if="!logined"
 	
 import REDA from '../components/REDA.vue'
 import Sector from '../components/sector'
+ import bar from '../components/bar.vue'
+
 import qs from 'qs'
 
 
@@ -79,6 +84,7 @@ import moment from 'moment'
 
 
 
+const Cinema=()=>import('../components/Cinema');
 
 
 
@@ -93,6 +99,7 @@ name:'SD',
 data(){
 
 	return {
+		
 		selected:NaN,
 		topay:false,
 		msg:'确认购票?',
@@ -143,7 +150,10 @@ return dif>0?false:true
 
 	select(index,status){
 if(status!=1)
-		{this.selected=index;}
+		{
+
+
+			this.selected=index;}
 		
 	},
 	pay(){
@@ -199,7 +209,9 @@ logined(){
 
 components:{
 	REDA,
-	Sector
+	Sector,
+	Cinema,
+	bar
 }
 
 

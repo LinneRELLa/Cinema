@@ -30,8 +30,14 @@ module.exports = defineConfig({
                         name: " components",
                         test: /[\\/]src[\\/]components[\\/]/,
                         test: /[\\/]src[\\/]components[\\/]/,
+
                         priority: -10
                     },
+                    libs:{
+                      name:'libs',
+                       test: /[\\/]libs[\\/]/,
+                         priority: -10
+                    }
                  
 
            

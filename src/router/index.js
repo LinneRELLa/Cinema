@@ -1,7 +1,7 @@
 
  import Router from 'vue-router'
 
- import ScheduleDetail from '../pages/ScheduleDetail'
+const ScheduleDetail =()=>import('../pages/ScheduleDetail')
 import login from '../pages/login'
 import Register from '../pages/Register'
 
