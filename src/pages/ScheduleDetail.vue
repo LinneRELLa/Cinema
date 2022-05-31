@@ -2,6 +2,7 @@
 	
 
 	<div class="Detail">
+<div class="mask" v-if="topay"></div>
 <div class="confirm" v-if="topay">
 	<span id="tt">{{msg}}</span>
 	  <el-button type="success" icon="el-icon-check" 
@@ -278,6 +279,7 @@ width: 200px;
 	font-size: 30px;
 }
 .confirm{
+	z-index: 4;
 	position:fixed;
 	display: flex;
 
@@ -298,5 +300,12 @@ width: 200px;
 		flex-basis: 100%;
 		text-align: center;
 	}
+}
+.mask{
+	position:fixed;
+	z-index: 3;
+	width: 100%;
+	height: 100%;
+	background:rgba(0,0,0,0.7);
 }
 </style>

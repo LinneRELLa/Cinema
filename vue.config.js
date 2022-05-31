@@ -10,7 +10,14 @@ module.exports = defineConfig({
      
       configureWebpack: {
      
+module:{
+rules:[{
+  test:/\.(ico)/,
+  type:"asset",
 
+},
+],
+},
      
 
     // 生产环境注入CDN

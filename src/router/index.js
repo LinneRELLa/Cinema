@@ -18,6 +18,9 @@ const Record=()=>import('../pages/Record');
 
 const RecordDetail=()=>import('../pages/RecordDetail')
 
+const Message=()=>import('../pages/Message')
+
+const DetailInfo=()=>import('../pages/DetailInfo')
 console.log('rt');
 
 
@@ -94,6 +97,17 @@ path:'/AccountInfo',
 {	path:'/RecordDetail',
 	name:'RecordDetail',
 	component:RecordDetail,
+
+},
+{	path:'/Message',
+	name:'Message',
+	component:Message,
+	children:[
+     {path:'DetailInfo',
+     name:'DetailInfo',
+     component:DetailInfo
+ }
+	]
 
 },
 

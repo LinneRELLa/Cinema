@@ -1,6 +1,6 @@
 
 
-import Vue from 'vue'
+import Vue from '../node_modules/vue/dist/vue.js'
 import less from 'less'
 import router from 'vue-router'
 
@@ -53,7 +53,8 @@ Vue.use(less)*/
 */
 
 
-/*Vue.use(router)*/
+Vue.use(router)
+Vue.use(Vuex)
 Vue.config.productionTip = false
 
 new Vue({
