@@ -19,7 +19,7 @@
 
   <router-link replace :to="`/Record`" class="icon" active-class="active-icon"><i class="el-icon-s-comment"/>评价</router-link>
 
-  <router-link replace :to="`/Message`" class="icon" active-class="active-icon"><i class="el-icon-s-comment"/>评价</router-link>
+
 
 	</div>
 	<div id="rightout">

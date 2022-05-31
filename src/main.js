@@ -1,6 +1,6 @@
 
 
-import Vue from '../node_modules/vue/dist/vue.js'
+import Vue from 'vue'
 import less from 'less'
 import router from 'vue-router'
 

@@ -6,13 +6,14 @@
 		<div style="white-space:nowrap;"><el-button type="primary" @click="$router.go(-1)" circle><i class="el-icon-arrow-left"></i></el-button><el-button type="primary" @click="()=>{this.input=!this.input;}" circle><i class="el-icon-s-comment"></i></el-button>{{this.$route.query.Name}}
 
 		</div>
-
+<div class="RecCont">
+	<div v-show="records.length>=6" id="RenderJudge"></div>
 	  <transition-group 
    name="animate__animated animate__slideInLeft"
 
     enter-active-class="animate__backInLeft"
   >
-		<el-row :gutter="20" v-for="(x,index) of records" v-if="records[0].Account" :key="x.时间" >
+		<el-row :gutter="20" v-for="(x,index) of RenderRecords" v-if="records[0].Account" :key="x.时间" >
 		
 			<el-col :span="3" :offset="4" >
 			
@@ -41,7 +42,9 @@
 </el-row>
 
 </transition-group>
-<div class="footer" v-show="records.length>=5">加载更多</div>
+<div class="footer" v-show="records.length>=6">加载更多</div>
+</div>
+
 <div style="min-width: 1060px;position: sticky;bottom: 0;
 background: rgba(0,0,0,0.6);
 ">
@@ -83,6 +86,14 @@ background: rgba(0,0,0,0.6);
     	 let x=this.throlote(this.infinitetest,30);
         return x;
 		},
+     RenderRecords(){
+
+        return this.records.slice(this.render,this.render+7)
+     },
+
+
+
+
     },
 created(){
 		this.$bus.$on('RC',(res)=>{
@@ -97,6 +108,9 @@ created(){
      },
      mounted(){
 this.lazyload();
+
+this.infiniterender();
+
      },
 activated(){
 	
@@ -124,15 +138,56 @@ input:0,
 record:'80,80,80,80,80',
 timenow:moment().year(2021),
 infinitetimes:0,
+render:0,
      	}
      },
      	methods:{
-     		lazyload(){
-     			console.log('lzload')
+          infiniterender(){
+const root=document.querySelector('.RecCont')
 	const lload=function(entries,observer){
-	
+	 
 if(entries[0].isIntersecting){
 	console.log('infinite load')
+	if(this.render>0){
+        this.render--;
+      root.scrollTo(0,1)
+   }
+        console.log(this.RenderRecords)
+
+
+	
+	let x=0;
+
+
+
+
+}
+}.bind(this)
+const observer=new IntersectionObserver(lload,{
+			root:root,
+			threshold:1.0
+		})
+const target=document.querySelector('#RenderJudge')
+ 
+
+	observer.observe(target)
+
+          },
+
+
+
+     		lazyload(){
+     			const root=document.querySelector('.RecCont')
+     			console.log('lzload')
+	const lload=function(entries,observer){
+	 
+if(entries[0].isIntersecting){
+	console.log('infinite load')
+        this.render++;
+   
+        console.log(this.RenderRecords)
+
+
 	this.infinitesub();
 	let x=0;
 
@@ -141,7 +196,7 @@ if(entries[0].isIntersecting){
 
 }
 }.bind(this)
-const root=document.querySelector('#rightin')
+
 		const observer=new IntersectionObserver(lload,{
 			root:root,
 			threshold:1.0
@@ -320,5 +375,11 @@ text-align: center;
 font-size:10px;
 
 }
-
+.RecCont{
+	max-height: calc(100% - 100px);
+	overflow-y: auto;
+}
+#RenderJudge{
+	height: 20px;
+}
 </style>
