@@ -1,22 +1,22 @@
 
  import Router from 'vue-router'
 
-const ScheduleDetail =()=>import('../pages/ScheduleDetail')
-import login from '../pages/login'
-import Register from '../pages/Register'
+const ScheduleDetail =()=>import('../pages/ScheduleDetail.mb')
+import login from '../pages/login.mb'
+import Register from '../pages/Register.mb'
 
-import infos from '../pages/Infromation'
-import SheduleLists from '../pages/SheduleLists'
+import infos from '../pages/Infromation.mb'
+import SheduleLists from '../pages/SheduleLists.mb'
 
-const AccountInfo = () => import('../pages/AccountInfo')
-const Edit=()=>import('../pages/edit')
-const FilmEdit=()=>import('../pages/FilmEdit')
-const FilmToEdit=()=>import('../pages/FilmToEdit')
+const AccountInfo = () => import('../pages/AccountInfo.mb')
+const Edit=()=>import('../pages/edit.mb')
+const FilmEdit=()=>import('../pages/FilmEdit.mb')
+const FilmToEdit=()=>import('../pages/FilmToEdit.mb')
 
-const ScheduleEdit=()=>import('../pages/ScheduleEdit')
-const Record=()=>import('../pages/Record');
+const ScheduleEdit=()=>import('../pages/ScheduleEdit.mb')
+const Record=()=>import('../pages/Record.mb');
 
-const RecordDetail=()=>import('../pages/RecordDetail')
+const RecordDetail=()=>import('../pages/RecordDetail.mb')
 
 
 

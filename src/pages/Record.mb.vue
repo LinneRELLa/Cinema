@@ -22,19 +22,13 @@ query:{No:x[0].片号,
 		<div class="cont" >
 		
 		
-		<div class="front">
-		<img :src="Number(x[0].片号)" alt="" class="fronts" /> 
-		</div>
+		
 		<div>
-			<drift v-if="!loading" />
+			<drift v-if="!loading"/>
 		</div>
 <div class="innercont">
 	<div class="leftcontent">
 <div class="title">{{x[0].FilmName}}</div>
-<div class="redacont">
-
-		<REDA :data="x[0].总评" v-if="x[0].总评" :editable="0" :small="true" />
-</div>
 </div>
 
 	<div class="rt" v-if="x[0].UID" :key="x[0].时间">
@@ -55,8 +49,7 @@ query:{No:x[0].片号,
 </div>
 
 
-	<div class="redacont1"><REDA :data="x[0].打分" v-if="x[0].打分" :editable="0" :tiny="true"/>
-</div>	
+
 			</div>
 			</div>
 </div>
@@ -70,7 +63,6 @@ query:{No:x[0].片号,
 	import REDA from '../components/REDA'
 import LineChart from '../components/LineChart'
 import drift from '../components/drift'
-
 export default{
 	mounted(){
 	},
@@ -240,8 +232,9 @@ this.data=this.SortedRecord();
 		border-top: gray 1px dotted;
 		padding:10px 0;
    display: flex;
-	height: 282px;
-	width: 1400px;
+   flex-direction: column;
+	
+	
 	&:hover{
 		background:rgb(14,14,14);
 	}
@@ -250,9 +243,9 @@ this.data=this.SortedRecord();
 		height: 100%;
 		width: 200px;
 	}
-	.innercont{flex: 1;
-		display: flex;
-		flex-wrap: wrap;
+	.innercont{	display: flex;
+	flex-direction: column;
+	align-items:center;
 .title{
 	width: 100%;
 	font-size: 25px;
@@ -272,7 +265,7 @@ flex: 1;
 height: 100%;
 display: flex;
 	border:gray 1px solid;
-width:400px;
+width: 80%;
 flex-wrap: wrap;
 .content{
 
@@ -312,7 +305,7 @@ overflow: hidden;
 		flex: 1;
 		overflow: hidden;
 		position:relative;
-		left: -50px;
+		left: -100px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -342,10 +335,10 @@ overflow: hidden;
 		flex-direction: column;
 		align-items:center;
 		width: 100%;
-		min-width:1480px;
+	
 	}
 	.leftcontent{
-		width: 50%;
+
 	}
 .fronts{
 	width: 100%;

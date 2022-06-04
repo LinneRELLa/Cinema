@@ -1,5 +1,5 @@
 <template>
-  <el-carousel :interval="5000" height="600px" type="card">
+  <el-carousel :interval="5000"  type="card" height="600px">
     <el-carousel-item v-for="item in 4" :key="item">
      <img :src="toshow[item]">
     </el-carousel-item>
@@ -40,6 +40,7 @@ dup.push(value.封面)
 
 
 <style scoped>
+
   .el-carousel__item h3 {
     color: #475669;
     font-size: 18px;
