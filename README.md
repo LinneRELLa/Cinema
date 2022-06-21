@@ -4,6 +4,6 @@
 
 顺便练习一下git
 
-由于未知原因，需要重新yarn add electorn 才可以正常编译
+请使用yarn install,npm i会由于未知原因报错
 
 效果预览可至www.rellal.com
