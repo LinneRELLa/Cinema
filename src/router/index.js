@@ -18,6 +18,8 @@ const Record=()=>import('../pages/Record');
 
 const RecordDetail=()=>import('../pages/RecordDetail')
 
+
+
 console.log('rt');
 
 
@@ -96,6 +98,7 @@ path:'/AccountInfo',
 	component:RecordDetail,
 
 },
+
 
 {
 

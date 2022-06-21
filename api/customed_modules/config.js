@@ -13,7 +13,5 @@ database:'Cnime',
 
 jwtkey:'RELLA ^-v-^'
 
-
-
 }
 module.exports=config;

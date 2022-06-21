@@ -13,10 +13,24 @@ import animate from 'animate.css'
 import Vuex from 'vuex'
 import moment from 'moment'
 import axios from 'axios'
-
 import App from './App.vue'
+import Appmb from './App.mb.vue'
 import RealRouter from './router'
+import MobileRouter from './routerm'
+
 import './CSS/element-ui-reset.less'
+
+const ISMOBILE = function () {
+  let flag = navigator.userAgent.match(
+    /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+  );
+  return flag;
+};
+
+
+
+
+
 
 
 axios.defaults.baseURL='https://www.rellal.com:900';
@@ -53,7 +67,8 @@ Vue.use(less)*/
 */
 
 
-/*Vue.use(router)*/
+Vue.use(router)
+Vue.use(Vuex)
 Vue.config.productionTip = false
 
 new Vue({
@@ -101,8 +116,9 @@ else{
 
 },
 
-  render: h => h(App),
-  router:RealRouter,
+  render: h => h(ISMOBILE()?Appmb:App),
+  
+  router: ISMOBILE() ? MobileRouter : RealRouter,
   store,
 
 }).$mount('#App')

@@ -26,7 +26,7 @@ query:{No:x[0].片号,
 		<img :src="Number(x[0].片号)" alt="" class="fronts" /> 
 		</div>
 		<div>
-			<LineChart v-if="!loading" :data="x[0].总评"/>
+			<drift v-if="!loading" />
 		</div>
 <div class="innercont">
 	<div class="leftcontent">
@@ -69,6 +69,8 @@ query:{No:x[0].片号,
 <script>
 	import REDA from '../components/REDA'
 import LineChart from '../components/LineChart'
+import drift from '../components/drift'
+
 export default{
 	mounted(){
 	},
@@ -210,7 +212,8 @@ return moment(x).format('YYYY-M-D H:mm:ss');
 	},
 	components:{
 		REDA,
-		LineChart
+		LineChart,
+		drift
 	},
 activated(){
 

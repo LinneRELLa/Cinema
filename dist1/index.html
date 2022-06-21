@@ -1,0 +1,62 @@
+<!doctype html><html lang=""><head><link href="http://cdn.rellal.com/index.css" rel="stylesheet"><script src="https://cdn.rellal.com/three.module.cus.js" defer="defer"></script><script src="http://cdn.rellal.com/vue.js" defer="defer"></script><script src="http://cdn.rellal.com/vue-router.js" defer="defer"></script><script src="http://cdn.rellal.com/vuex.min.js" defer="defer"></script><script src="http://cdn.rellal.com/index.js" defer="defer"></script><script src="http://cdn.rellal.com/axios.min.js" defer="defer"></script><script src="http://cdn.rellal.com/moment.js" defer="defer"></script><script src="http://cdn.rellal.com/less.js" defer="defer"></script><script src="http://cdn.rellal.com/qs.js" defer="defer"></script><script src="./alert.js"></script><link rel="stylesheet" href="./1.css"><style>body,html{height:100%;min-width:600px;
+  		margin: 0;overflow: hidden;
+
+  		min-height: 400px;}</style><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.ico"><title>test</title><script defer="defer" type="module" src="js/%20components.5baa0bfd.js"></script><script defer="defer" type="module" src="js/chunk-vendors.747271bc.js"></script><script defer="defer" type="module" src="js/index.3e63527a.js"></script><link href="css/%20components.5b8bd932.css" rel="stylesheet"><link href="css/chunk-vendors.be7abf4f.css" rel="stylesheet"><link href="css/index.f18ab083.css" rel="stylesheet"><script defer="defer" src="js/%20components-legacy.6ecfdeb8.js" nomodule></script><script defer="defer" src="js/chunk-vendors-legacy.f2831128.js" nomodule></script><script defer="defer" src="js/index-legacy.d5823f25.js" nomodule></script></head><body><noscript><strong>We're sorry but test doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="App"><div id="idloading"><p class="load_title">正在加载系统资源，请耐心等待...</p></div><div class="idcontent"><div class="box"><div class="out-front">R</div><div class="out-back">R</div><div class="out-left">R</div><div class="out-right">R</div><div class="out-top">R</div><div class="out-bottom">R</div><span class="in-front"></span> <span class="in-back"></span> <span class="in-left"></span> <span class="in-right"></span> <span class="in-top"></span> <span class="in-bottom"></span></div></div></div><script>var clickNum = 1;    //点击次数
+function a() {
+  // 如果点击次数是奇数就展开，偶数就收起
+  if (clickNum % 2 == 0) {
+    // 收起
+  document.getElementsByClassName('out-front')[0].style.transform='translateZ(100px)' 
+
+  document.getElementsByClassName('out-back')[0].style.transform='translateZ(-100px) rotateY(180deg)' 
+
+ document.getElementsByClassName('out-left')[0].style.transform='translateX(-100px) rotateY(-90deg)' 
+
+ document.getElementsByClassName('out-right')[0].style.transform='translateX(100px) rotateY(90deg)' 
+
+ document.getElementsByClassName('out-top')[0].style.transform='translateY(-100px) rotateX(90deg)' 
+ document.getElementsByClassName('out-bottom')[0].style.transform='translateY(100px) rotateX(-90deg)' 
+  } else {
+    // 展开
+
+      document.getElementsByClassName('out-front')[0].style.transform='translateZ(200px)' 
+
+  document.getElementsByClassName('out-back')[0].style.transform='translateZ(-200px) rotateY(180deg)' 
+
+ document.getElementsByClassName('out-left')[0].style.transform='translateX(-200px) rotateY(-90deg)' 
+
+ document.getElementsByClassName('out-right')[0].style.transform='translateX(200px) rotateY(90deg)' 
+
+ document.getElementsByClassName('out-top')[0].style.transform='translateY(-200px) rotateX(90deg)' 
+ document.getElementsByClassName('out-bottom')[0].style.transform='translateY(200px) rotateX(-90deg)' 
+
+
+  }
+  clickNum++;
+};
+
+// box 的所有子元素添加鼠标手势样式
+
+
+let rotateX=0
+let timer=null
+function rotate(){
+
+clearInterval(timer);
+document.getElementsByClassName('box')[0].style.transform=`rotate3d(1,1,0,${rotateX}deg)`
+timer=setInterval(()=>{
+  rotateX+=120;
+  rotate()
+
+},1000)
+  
+}
+
+const timer1=setInterval(a,1000);
+rotate()
+
+
+window.onload=function(){
+  clearInterval(timer);
+  clearInterval(timer1);
+}</script></body></html>
