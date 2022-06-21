@@ -145,7 +145,7 @@ function sync(array,i,clock,max){
 const xgap=(canvas.width-80)/array.length;
 
 for(let z=0;z<array.length;z++){
-	console.log('s')
+
 const ygap=(array[z+1]-array[z])/max*(canvas.height-80);
 
 
@@ -213,7 +213,7 @@ requestAnimationFrame(()=>{redraw(array,clock)})
 else{
    array.shift()
    ci=0;
-   console.log(array)
+ 
   change(b,180,Math.random()*80,max)
 }
 

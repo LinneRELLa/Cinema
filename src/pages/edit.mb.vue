@@ -76,7 +76,7 @@ height: 100%;
 	width: 100%;
 	background:rgba(36, 40, 47, 0.8);
 overflow: auto;
+display: flex;
 }
-
 
 </style>
