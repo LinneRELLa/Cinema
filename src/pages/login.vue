@@ -34,7 +34,11 @@
 
 <script >
 import qs from 'qs'
+import router from '../router'
+import {dynamicRouter} from '../router'
+
 	export default {
+
 
 
 name:'login',
@@ -105,6 +109,7 @@ if(response.data.status){
 	
 
 	localStorage.setItem('RORELTOKEN',JSON.stringify(response.data));
+
 location.reload();
 	
 

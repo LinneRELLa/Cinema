@@ -8,6 +8,10 @@ Vue.use(Vuex)
 
 
 const actions={
+   setRouter(mstore,router){
+mstore.commit('setRouter',router)
+   },
+
    allFilms(mstore,data){
 mstore.commit('AllFilms',data.data);
    },
@@ -34,6 +38,9 @@ mstore.commit('METHOD',data);
 
 }
 const mutations={
+   setRouter(state,router){
+state.router=router
+   },
 
 
 AllFilms(state,data){
@@ -62,7 +69,8 @@ const state={
 data:[],
 METHOD:{},
 AC:{status:0},
-Record:[]
+Record:[],
+router:[]
 
 }
 

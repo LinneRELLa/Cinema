@@ -9,7 +9,7 @@
 	<div id="bottom">
 	<div id="left">
 	
-		<router-link replace :to="`/SheduleLists`" class="icon" active-class="active-icon" ref="default"
+	<!-- 	<router-link replace :to="`/SheduleLists`" class="icon" active-class="active-icon" ref="default"
        
 
 		><i class="el-icon-s-ticket"/>购票</router-link>
@@ -17,9 +17,11 @@
 
  <router-link replace :to="`/Edit/FilmToEdit`" class="icon" active-class="active-icon"><i class="el-icon-edit"/>排片</router-link>
 
-  <router-link replace :to="`/Record`" class="icon" active-class="active-icon"><i class="el-icon-s-comment"/>评价</router-link>
+  <router-link replace :to="`/Record`" class="icon" active-class="active-icon"><i class="el-icon-s-comment"/>评价</router-link> -->
 
-
+  <router-link replace v-for="route in routes" :key="route.path" :to="route.path" class="icon" active-class="active-icon">
+<i :class="route.meta.icon"/>
+  {{route.meta.name}}</router-link>
 
 	</div>
 	<div id="rightout">
@@ -49,6 +51,10 @@
 	/*	
 */
 name:'App',
+created(){
+
+
+},
 
 
 data(){
@@ -73,6 +79,7 @@ mounted(){
 	this.$bus.$on('sloaded',(status)=>{
 
     this.sloaded=status;
+
     
 
 	})
@@ -85,13 +92,16 @@ methods:{
 
 
 	}
-}
-/*computed(){
+},
+computed:{
+ routes(){
+ 	console.log(this.$store.state)
+ 	
+ 	 return this.$store.state.router.filter(e=>!e.meta.hide)||[]
+ }
 
 
-
-}*/
-
+},
 
 	
 }

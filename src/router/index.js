@@ -23,14 +23,15 @@ const RecordDetail=()=>import('../pages/RecordDetail')
 console.log('rt');
 
 
-
- export default new Router({
-routes:[
-
+export const constantRoutes=[
 {
 
 	path:'/SheduleLists',
  component:SheduleLists,
+ meta:{
+ 	icon:'el-icon-s-ticket',
+ 	name:'购票'
+ },
  children:[
 			{
    name:'ScheduleDetail',
@@ -45,6 +46,10 @@ routes:[
 {
 path:'/AccountInfo',
  component:AccountInfo,
+  meta:{
+ 	icon:'el-icon-user',
+ 	name:'用户'
+ },
  children:[
 			{
    name:'login',
@@ -65,12 +70,52 @@ path:'/AccountInfo',
 
 
  ]
+}
+,
+{	path:'/Record',
+	name:'Record',
+	component:Record,
+	 meta:{
+ 	icon:'el-icon-s-comment',
+ 	name:'评价'
+ },
+
 },
+{	path:'/RecordDetail',
+	name:'RecordDetail',
+	component:RecordDetail,
+	meta:{hide:true}
+
+},
+
+
+{
+
+	path: '/',
+    redirect: '/SheduleLists',
+    meta:{hide:true}
+},{
+
+	path: '*',
+    redirect: '/SheduleLists',
+    meta:{hide:true}
+}
+]
+
+
+export const dynamicRoutes=[
+
 {
 
 	path:'/Edit',
 	name:'Edit',
+	 meta:{
+ 	icon:'el-icon-edit',
+ 		level:5,
+ 	name:'编辑',
+ },
 	component:Edit,
+	redirect:'/Edit/FilmToEdit',
 	children:[
     {
     	path:'FilmToEdit',
@@ -86,34 +131,10 @@ path:'/AccountInfo',
     	name:'ScheduleEdit',
     	component:ScheduleEdit,}
 	]
-}
-,
-{	path:'/Record',
-	name:'Record',
-	component:Record,
+}]
 
-},
-{	path:'/RecordDetail',
-	name:'RecordDetail',
-	component:RecordDetail,
-
-},
-
-
-{
-
-	path: '/',
-    redirect: '/SheduleLists'
-},{
-
-	path: '*',
-    redirect: '/SheduleLists'
-}
-
-
-
-]
-
+ export default new Router({
+ routes: constantRoutes,
 
 
  })

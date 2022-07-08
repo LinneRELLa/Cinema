@@ -23,7 +23,7 @@ query:{No:x[0].片号,
 		
 		
 		<div class="front">
-		<img :src="Number(x[0].片号)" alt="" class="fronts" /> 
+		<img :data-src="x[0].封面" alt="" class="fronts" /> 
 		</div>
 		<div>
 			<drift v-if="!loading" />
@@ -107,15 +107,9 @@ lazyload(){
 for(let entry of entries){
 const src=entry.target.src.split('/')[entry.target.src.split('/').length-1]
 	if(entry.isIntersecting){
-if(Number(src)){
-	for(let x of this.data){
-		if(src==x[0].片号){
-			entry.target.src=x[0].封面
-			console.log(src)
-		}
-	}
-	
-						}
+console.log(entry.target)
+		entry.target.src=entry.target.dataset.src
+
 					}
 				}
 }.bind(this)

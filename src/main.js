@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import less from 'less'
 import router from 'vue-router'
-
+import '@/assets/font/font.css'
 /*
 import ElementUI from 'element-ui';
 import Element from 'element-ui';*/
@@ -17,6 +17,7 @@ import App from './App.vue'
 import Appmb from './App.mb.vue'
 import RealRouter from './router'
 import MobileRouter from './routerm'
+import login from './permission.js'
 
 import './CSS/element-ui-reset.less'
 
@@ -92,27 +93,8 @@ return tr;
 },
 created(){
   /*登录*/
-  this.axios({
-
-   method:'post',
-  url:'/api/ac/infos',
-
-}).then((res)=>{
-
-if(res.data!='expired'){
-this.$store.dispatch('ac',res.data);
-
-}
-else{
-  console.log('exp')
-  localStorage.removeItem('RORELTOKEN');
-
-}
-
-},
-  (err)=>{
-    console.log('err');
-  })
+  login.bind(this)()
+  
 
 },
 

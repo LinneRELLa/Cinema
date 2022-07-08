@@ -244,7 +244,7 @@ display: flex;
 flex-direction: column;
 }
 .edw{
-	font-family: 'Edwardian Script ITC';
+	font-family: '微软雅黑';
 	font-size: 120px;
 }
 .smaller{
